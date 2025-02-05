@@ -1,0 +1,85 @@
+/* 自定义样式表 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background-color: #f0f0f0;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+.card {
+    background: rgba(27, 30, 103, 0.458);
+    padding: 30px; /* 增加内边距 */
+    border-radius: 20px; /* 圆角 */
+    box-shadow: 0 0 10px rgba(202, 18, 18, 0.714);
+    width: 400px; /* 或适当宽度 */
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold; /* 加粗 */
+    font-size: 36px; /* 字体大小调整 */
+}
+
+.input-group {
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+    border-radius: 33px; /* 圆角 */
+    padding: 15px; /* 内边距 */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: transparent; /* 透明背景 */
+    color: #000; /* 字体颜色 */
+}
+
+.input-group input::placeholder {
+    color: #aaa; /* 占位符颜色 */
+}
+
+.submit {
+    width: 100%;
+    padding: 3px;
+    background: hsla(276, 77%, 37%, 0.489);
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background: #0056b3;
+}
+
+.prompt .success {
+    color: green;
+    text-align: center;
+}
+
+.success {
+    color: #28a745;
+}
