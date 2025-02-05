@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8"> <!-- 设置字符编码为UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口 -->
+    <meta name="description" content="个人简介网站，欢迎访问我的个人网站！"> <!-- SEO优化: 页面描述 -->
+    <meta name="keywords" content="个人, 简介, 网站"> <!-- SEO优化: 页面关键词 -->
+    
+    <title>个人简介</title> <!-- 页面标题 -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- 引入Font Awesome图标样式 -->
+    <link rel="stylesheet" href="styles.css"> <!-- 外部CSS样式文件，使用工具压缩 -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            position: relative; 
+            background: url(images/背景图.jpg) no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            background-color: rgba(51, 51, 51, 0.7);
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline; /* 添加悬停效果 */
+        }
+        section {
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        video.background-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* 保持视频在背景 */
+            transform: translate(-50%, -50%);
+        }
+        /* 无框表格样式 */
+        .table {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .table div {
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+        }
+        /* 轮播图样式 */
+        .gallery {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel .slide {
+            flex: 0 0 100%; /* 每个滑块占100%宽度 */
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px; /* 固定高度，确保内容对齐 */
+        }
+        .carousel .slide img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .carousel-container {
+            overflow: hidden;
+            max-width: 600px; /* 可调整轮播图宽度 */
+            margin: 20px auto;
+        }
+        /* 按钮样式 */
+        .button {
+            cursor: pointer;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        /* 文字卡片样式 */
+        .card {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .card-container {
+    display: flex; /* 使用弹性布局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 20px; /* 卡片之间的间距 */
+    max-width: 800px; /* 最大宽度 */
+    margin: 20px auto; /* 居中对齐 */
+}
+.table {
+    display: flex; /* 使用弹性布局 */
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: center; /* 居中对齐 */
+    gap: 10px; /* 添加每个项之间的间距 */
+    margin: 20px auto; /* 居中对齐 */
+    max-width: 800px; /* 最大宽度 */
+}
+
+.table div {
+    flex: 1 1 calc(33% - 20px); /* 每个项占1/3宽度，减去间距 */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    text-align: center; /* 文本居中 */
+}
+
+.card {
+    display: flex; /* 使用弹性布局 */
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+    border-radius: 10px; /* 圆角 */
+    overflow: hidden; /* 超出部分隐藏 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+}
+
+.card-content {
+    flex: 1; /* 占用剩余空间 */
+    padding: 20px; /* 内边距 */
+}
+
+.card-image {
+    flex: 1; /* 占用剩余空间 */
+}
+
+.card-image img {
+    max-width: 100%; /* 图片最大宽度100% */
+    height: auto; /* 高度自适应 */
+    border-radius: 0 10px 10px 0; /* 右侧圆角 */
+}
+.card {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: left;
+    transition: all 0.3s ease; /* 加入过渡效果 */
+}
+
+.card:hover {
+    background-color: rgba(255, 255, 255, 1); /* 悬停时背景变为不透明 */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* 增加阴影效果 */
+    transform: scale(1.02); /* 放大卡片 */
+}
+.footer {
+    background-color: rgba(51, 51, 51, 0.7);
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    margin-top: 1000px;
+}
+    </style>
+</head>
+
+<body>
+    <video autoplay muted loop class="background-video"> <!-- 背景视频元素 -->
+        <source src="images/www.mp4" type="video/mp4"> <!-- 视频源 -->
+        您的浏览器不支持视频标签。 <!-- 浏览器不支持时显示的内容 -->
+    </video>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="a.html">关于我</a></li>
+                <li><a href="f.html">服务</a></li>
+                <li><a href="b.html">博客</a></li>
+                <li><a href="x.html">相册</a></li>
+                <li><a href="zuoye.html">课本衔接</a></li>
+                <li><a href="contact.html">联系我</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home"> <!-- 主页段落 -->
+        <h1>欢迎来到我的个人网站</h1> <!-- 主页标题 -->
+        <p>这里是我的个人网站，欢迎来访！</p>
+    </section>
+
+    <section id="about"> <!-- 关于我段落 -->
+        <h2>关于我</h2>
+        <div class="table"> <!-- 表格结构 -->
+            <div>运动</div>
+            <div>学习</div>
+            <div>爱好</div>
+            <div>设计</div>
+            <div>读书</div>
+            <div>外语</div>
+        </div>
+
+            <h2>我的故事</h2>
+            
+            <div class="card-container"> <!-- 卡片容器 -->
+                <div class="card"> <!-- 运动模块卡片 -->
+                    <div class="card-content">
+                        <h3 style="font-family: 'Brush Script MT', cursive;">运动</h3> <!-- 艺术字标题 -->
+                        <p>我喜欢各种运动，尤其是篮球和足球。在篮球场上，我享受着每一次精准的投篮和团队的默契配合。</p>
+                    </div>
+                    <div class="card-image">
+                        <img src="images/d72a7a1ff0c02f481beee44d3abc60f3output_00001.jpg" alt="运动">
+                    </div>
+                </div>
+        
+                <div class="card"> <!-- 学习模块卡片 -->
+                    <div class="card-content">
+                        <h3 style="font-family: 'Brush Script MT', cursive;">学习</h3> <!-- 艺术字标题 -->
+                        <p>学习是我生活中不可替代的一环，涵盖了计算机专业等课程。我享受新知识带来的乐趣。</p>
+                    </div>
+                    <div class="card-image">
+                        <img src="images/2.PNG" alt="学习">
+                    </div>
+                </div>
+                
+                <div class="card"> <!-- 爱好模块卡片 -->
+                    <div class="card-content">
+                        <h3 style="font-family: 'Brush Script MT', cursive;">爱好</h3> <!-- 艺术字标题 -->
+                        <p>我有许多爱好，包括阅读、旅行和摄影。每一种爱好都让我获得不同的乐趣及启发。</p>
+                    </div>
+                    <div class="card-image">
+                        <img src="images/日落4.jpg" alt="爱好">
+                    </div>
+                </div>
+            </div>
+        
+        </section> <!-- 关于我段落结束 -->
+        
+    <footer style="background-color: rgba(51, 51, 51, 0.7); color: #fff; padding: 1rem 0; text-align: center;">
+        <p>&copy; 2024 山东外事职业大学 大数据工程技术 李保媛 12422706026.</p> <!-- 版权所有信息 -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script> <!-- 引入jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> <!-- 引入Bootstrap -->
+    <script>
+        let currentIndex = 0;
+
+        // 显示指定索引的幻灯片
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel .slide');
+            const totalSlides = slides.length;
+
+            if (index >= totalSlides) currentIndex = 0; // 如果超过总数，回到第一个
+            if (index < 0) currentIndex = totalSlides - 1; // 如果小于0，跳到最后一个
+
+            const offset = -currentIndex * 100; // 每张图片占100%
+            document.querySelector('.carousel').style.transform = `translateX(${offset}%)`; // 设置位移
+        }
+
+        // 切换到下一张幻灯片
+        function nextSlide() {
+            currentIndex++;
+            showSlide(currentIndex);
+        }
+
+        // 切换到上一张幻灯片
+        function prevSlide() {
+            currentIndex--;
+            showSlide(currentIndex);
+        }
+    </script>
+</body>
+
+</html>

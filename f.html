@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>个人简介</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh; /* 确保页面至少占满整个视口高度 */
+        }
+        
+        /* 背景视频样式 */
+        .background-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 导航栏样式 */
+        header {
+            background-color: rgba(51, 51, 51, 0.8);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem; /* 使用gap替代margin */
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        /* 主要内容区域样式 */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 6rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item h3 {
+            font-size: 1.4rem;
+            margin: 1rem 0;
+            color: #333;
+        }
+        
+        .gallery-item p {
+            font-size: 1rem;
+            color: #666;
+            margin: 0.5rem 1rem;
+            line-height: 1.6;
+            padding-bottom: 1rem;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .gallery {
+                flex-direction: column;
+                padding: 5rem 1rem 4rem;
+            }
+            
+            .gallery-item {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="images/www.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="a.html">关于我</a></li>
+                <li><a href="f.html">服务</a></li>
+                <li><a href="b.html">博客</a></li>
+                <li><a href="x.html">相册</a></li>
+                <li><a href="zuoye.html">课本衔接</a></li> <!-- 导航链接到课本衔接页面 -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <a href="https://chinavolunteer.mca.gov.cn/site/home">
+                <div class="image-container">
+                    <img src="images/1.jpg" alt="志愿者植树">
+                </div>
+                <h3>志愿者</h3>
+                <p>在2023年，我参加了志愿者活动，为公园内的树木种植贡献了自己的力量。</p>
+                <p>志愿者活动让我更加了解社会，也让我更加珍惜自己的生活。</p>
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="https://www.aliyun.com/activity/daily/quickbi_xiaoq?utm_content=se_1017816906">
+                <div class="image-container">
+                    <img src="images/3.PNG" alt="设计">
+                </div>
+                <h3>数据分析</h3>
+                <p>依据数据仓库技术进行数据分析</p>
+                <p>给生活提供便利，让数据更加合理运用</p>
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="https://www.runoob.com/">
+                <div class="image-container">
+                    <img src="images/1设.jpg" alt="照顾动物">
+                </div>
+                <h3>编程</h3>
+                <p>各式各类的编程服务</p>
+                <p>各式各类的编程服务创造互联网</p>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 山东外事职业大学 大数据工程技术 李保媛 12422706026.</p>
+    </footer>
+</body>
+</html>

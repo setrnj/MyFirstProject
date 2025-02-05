@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 文档头部信息 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客</title>
+    <style>
+        * {
+            /* 初始化所有元素的外边距和内边距为0，并启用边框盒模型 */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* 背景视频样式 */
+        video.background-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 导航栏样式 */
+        header {
+            background-color: rgba(51, 51, 51, 0.7);
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* 容器样式 */
+        .container {
+            display: flex;
+            justify-content: flex-start;
+            padding: 50px;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(140, 122, 122, 0.1);
+            margin-top: 200px;
+            border-radius: 20px;
+        }
+
+        /* 品牌名称样式 */
+        .brand-name {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            text-align: left;
+            margin-bottom: 20px;
+            font-family: 'Brush Script MT', cursive;
+        }
+
+        /* 侧边栏样式 */
+        .sidebar {
+            width: 500px;
+            margin-right: 20px;
+        }
+
+        .sidebar h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #666;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+            padding: 10px;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            border-left: 4px solid #f0a5a5;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #f75f5fe6;
+        }
+
+        /* 主体部分样式 */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* 输入组样式 */
+        .input-group {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .input-group label {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 输入框样式 */
+        .input-group input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* 底部样式 */
+        footer {
+            /* 设置页脚的背景颜色为半透明的深灰色 */
+            background-color: rgba(51, 51, 51, 0.7);
+            /* 设置页脚的文字颜色为白色 */
+            color: #fff;
+            /* 设置页脚的内边距 */
+            padding: 1rem 0;
+            /* 设置页脚的文字居中对齐 */
+            text-align: center;
+        
+            /* 设置页脚距离页面底部的位置为0 */
+            bottom: 0;
+            /* 设置页脚的宽度为100% */
+            width: 100%;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="images/www.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="a.html">关于我</a></li>
+                <li><a href="f.html">服务</a></li>
+                <li><a href="b.html">博客</a></li>
+                <li><a href="x.html">相册</a></li>
+                <li><a href="zuoye.html">课本衔接</a></li>
+                <li><a href="contact.html">联系我</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 页面主要内容容器 -->
+    <div class="container">
+        <!-- 侧边栏部分 -->
+        <div class="sidebar">
+            <div class="brand-name">我的博客</div>
+            <h3>一些瞬间</h3>
+            <ul>
+                <li>星期四的晚上</li>
+                <li>初中毕业</li>
+                <li>高中毕业</li>
+                <li>今天的日落很美</li>
+                <li>又是新的一岁</li>
+                <li>什么时候放寒假</li>
+                <li>123，今天是音乐节</li>
+                <li>今天的烟花也很美</li>
+                <li>我喜欢今天晚上的月亮</li>
+                <li>今天的天气很好</li>
+            </ul>
+            <!-- 输入框组 -->
+            <div class="input-group">
+                <label for="brand">瞬间</label>
+                <input type="text" id="brand" placeholder="搜索瞬间...">
+                <label for="fren">筛选选项</label>
+                <input type="text" id="fren" placeholder="筛选选项...">
+                <label for="dnat">信息</label>
+                <input type="text" id="dnat" placeholder="输入信息...">
+            </div>
+        </div>
+        <!-- 主体内容部分 -->
+        <div class="main">
+            <img src="images/2.jpg" alt="日常">
+            <img src="images/22.jpg" alt="日常">
+            <img src="images/222.jpg" alt="日常">
+            <img src="images/222222.jpg" alt="日常">
+            <img src="images/2222222.jpg" alt="日常">
+        </div>
+    </div>
+
+    <!-- 页脚内容 -->
+    <footer>
+        <p>&copy; 2024 山东外事职业大学 大数据工程技术 李保媛 12422706026.</p>
+    </footer>
+</body>
+</html>

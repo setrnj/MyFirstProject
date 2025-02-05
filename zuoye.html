@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"> <!-- 设置网页的字符编码为UTF-8 -->
+    <title>作业</title> <!-- 设置网页的标题为“作业” -->
+    <style type="text/css">
+        /* 全局样式 */
+        * {
+            margin: 0; /* 移除所有元素的默认外边距 */
+            padding: 0; /* 移除所有元素的默认内边距 */
+            box-sizing: border-box; /* 设置盒模型为border-box，使内边距和边框包含在宽度和高度内 */
+        }
+        body {
+            font-family: Arial, sans-serif; /* 设置网页的全局字体为Arial，无衬线字体 */
+            line-height: 1.6; /* 设置行高为1.6 */
+            position: relative; /* 设置body的定位为相对定位 */
+            background: url(images/背景图.jpg) no-repeat center center fixed; /* 设置背景图像为背景图.jpg，居中且固定 */
+            background-size: cover; /* 使背景图像覆盖整个视口 */
+            cursor: none; /* 隐藏鼠标 */
+        }
+        .custom-cursor {
+            position: absolute; /* 设置自定义鼠标的位置为绝对定位 */
+            width: 20px; /* 设置自定义鼠标的宽度为20px */
+            height: 20px; /* 设置自定义鼠标的高度为20px */
+            background-color: #fff; /* 设置自定义鼠标的背景颜色为白色 */
+            border-radius: 50%; /* 设置自定义鼠标的边框为圆形 */
+            pointer-events: none; /* 使自定义鼠标不响应鼠标事件 */
+            transition: transform 0.1s ease-out; /* 添加鼠标移动的过渡效果 */
+            transform: translate(-50%, -50%); /* 使自定义鼠标相对于其自身中心点定位 */
+        }
+        .custom-cursor.click {
+            width: 10px; /* 设置点击时自定义鼠标的宽度为10px */
+            height: 10px; /* 设置点击时自定义鼠标的高度为10px */
+            background-color: #333; /* 设置点击时自定义鼠标的背景颜色为深灰色 */
+            border-radius: 50%; /* 设置点击时自定义鼠标的边框为圆形 */
+            transition: transform 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out; /* 添加点击时的过渡效果 */
+        }
+        header {
+            background-color: rgba(51, 51, 51, 0.7); /* 设置头部的背景颜色为半透明黑色 */
+            color: #fff; /* 设置头部的文字颜色为白色 */
+            padding: 1rem 0; /* 设置头部的上下内边距为1rem */
+            text-align: center; /* 设置头部的文字居中 */
+            z-index: 2; /* 设置头部的层级为2 */
+            position: relative; /* 设置头部的定位为相对定位 */
+        }
+        h1 {
+           text-align: center; /* 设置标题的文字居中 */
+           margin-top: 50px; /* 设置标题的上间距为50px */
+           margin-bottom: 50px; /* 设置标题的下间距为50px */
+       }
+
+        nav ul {
+            list-style: none; /* 去掉导航栏列表的默认样式 */
+            display: flex; /* 使用弹性布局 */
+            justify-content: center; /* 使导航栏的内容居中 */
+            margin: 0; /* 移除外边距 */
+            padding: 0; /* 移除内边距 */
+        }
+
+        nav ul li {
+            margin: 0 1rem; /* 设置每个导航项左右外边距为1rem */
+        }
+
+        nav ul li a {
+            color: #fff; /* 设置导航链接的文字颜色为白色 */
+            text-decoration: none; /* 去掉导航链接的下划线 */
+            font-weight: bold; /* 加粗导航链接的文字 */
+            padding: 10px; /* 增加导航链接的内边距 */
+            transition: background-color 0.3s ease; /* 添加背景颜色的过渡效果 */
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline; /* 悬停在导航链接上时显示下划线 */
+            background-color: rgba(255, 255, 255, 0.2); /* 悬停在导航链接上时背景颜色变为半透明白色 */
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.7); /* 设置页脚的背景颜色为半透明黑色 */
+            color: #fff; /* 设置页脚的文字颜色为白色 */
+            padding: 1rem 0; /* 设置页脚的上下内边距为1rem */
+            text-align: center; /* 设置页脚的文字居中 */
+            margin-top: 20px; /* 设置页脚的上外边距为20px */
+            position: relative; /* 设置页脚的定位为相对定位 */
+        }
+
+        video.background-video {
+            position: fixed; /* 设置背景视频的位置为固定定位 */
+            top: 50%; /* 设置背景视频的垂直位置为视口的50% */
+            left: 50%; /* 设置背景视频的水平位置为视口的50% */
+            min-width: 100%; /* 设置背景视频的最小宽度为视口的100% */
+            min-height: 100%; /* 设置背景视频的最小高度为视口的100% */
+            width: auto; /* 设置背景视频的宽度为自动 */
+            height: auto; /* 设置背景视频的高度为自动 */
+            z-index: -1; /* 设置背景视频的层级为-1，使其位于其他内容下方 */
+            transform: translate(-50%, -50%); /* 使背景视频相对于其自身中心点定位 */
+        }
+
+        section {
+            padding: 2rem 1rem; /* 设置段落的内边距为上下2rem，左右1rem */
+            text-align: center; /* 设置段落的文字居中 */
+            position: relative; /* 设置段落的定位为相对定位 */
+            z-index: 1; /* 设置段落的层级为1 */
+        }
+
+        /* 无框表格样式 */
+        .table {
+            display: grid; /* 使用网格布局 */
+            grid-template-columns: repeat(3, 1fr); /* 设置表格有三列，每列宽度相等 */
+            gap: 10px; /* 设置表格单元格之间的间距为10px */
+            margin: 20px auto; /* 设置表格的外边距为上下20px，左右自动（居中显示） */
+            max-width: 800px; /* 设置表格的最大宽度为800px */
+        }
+
+        .table div {
+            padding: 10px; /* 设置表格单元格的内边距为10px */
+            background-color: rgba(255, 255, 255, 0.8); /* 设置表格单元格的背景颜色为半透明白色 */
+            border-radius: 5px; /* 设置表格单元格的边框为圆角 */
+        }
+
+        /* 轮播图样式 */
+        .carousel-container {
+            overflow: hidden; /* 隐藏溢出的内容 */
+            max-width: 600px; /* 设置轮播图容器的最大宽度为600px */
+            margin: 20px auto; /* 设置轮播图容器的外边距为上下20px，左右自动（居中显示） */
+        }
+
+        .carousel {
+            display: flex; /* 使用弹性布局 */
+            transition: transform 0.5s ease; /* 添加滑动的过渡效果 */
+        }
+
+        .carousel .slide {
+            flex: 0 0 100%; /* 设置每个滑块占100%宽度 */
+            padding: 10px; /* 设置滑块的内边距为10px */
+            background-color: rgba(255, 255, 255, 0.8); /* 设置滑块的背景颜色为半透明白色 */
+            border-radius: 5px; /* 设置滑块的边框为圆角 */
+            display: flex; /* 使用弹性布局 */
+            flex-direction: column; /* 设置滑块的内容垂直排列 */
+            align-items: center; /* 设置滑块的内容水平居中 */
+            justify-content: center; /* 设置滑块的内容垂直居中 */
+            min-height: 300px; /* 设置滑块的最小高度为300px */
+            transition: transform 0.2s ease; /* 添加悬停时的过渡效果 */
+        }
+
+        .carousel .slide:hover {
+            transform: scale(1.05); /* 悬停在滑块上时，放大1.05倍 */
+        }
+
+        .carousel .slide img {
+            max-width: 100%; /* 设置滑块中的图片最大宽度为100% */
+            height: auto; /* 设置滑块中的图片高度为自动 */
+            margin-bottom: 10px; /* 设置滑块中的图片底部外边距为10px */
+        }
+
+        /* 文字卡片样式 */
+        .card-container {
+            display: flex; /* 使用弹性布局 */
+            flex-direction: column; /* 设置文字卡片容器的内容垂直排列 */
+            gap: 20px; /* 设置文字卡片之间的间距为20px */
+            max-width: 800px; /* 设置文字卡片容器的最大宽度为800px */
+            margin: 20px auto; /* 设置文字卡片容器的外边距为上下20px，左右自动（居中显示） */
+            position: relative; /* 设置文字卡片容器的定位为相对定位 */
+            z-index: 2; /* 设置文字卡片容器的层级为2 */
+        }
+
+        .card {
+            display: flex; /* 使用弹性布局 */
+            background-color: rgba(255, 255, 255, 0.8); /* 设置文字卡片的背景颜色为半透明白色 */
+            border-radius: 10px; /* 设置文字卡片的边框为圆角 */
+            overflow: hidden; /* 隐藏超出文字卡片的内容 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 设置文字卡片的阴影效果 */
+        }
+
+        .card-content {
+            flex: 1; /* 占用剩余空间 */
+            padding: 20px; /* 设置文字卡片内容的内边距为20px */
+        }
+
+        .card-image {
+            flex: 1; /* 占用剩余空间 */
+        }
+
+        .card-image img {
+            max-width: 100%; /* 设置文字卡片图片的最大宽度为100% */
+            height: auto; /* 设置文字卡片图片的高度为自动 */
+            border-radius: 0 10px 10px 0; /* 设置文字卡片图片的右侧边框为圆角 */
+        }
+
+        /* 文本超链接样式 */
+        a {
+            color: #333; /* 设置超链接的文字颜色为深灰色 */
+            text-decoration: none; /* 去掉超链接的下划线 */
+            transition: color 0.3s ease; /* 添加文字颜色的过渡效果 */
+        }
+
+        a:hover {
+            color: #ff6347; /* 悬停在超链接上时，改变文字颜色为番茄红 */
+        }
+
+        /* 悬停三盒子样式 */
+        .hover-box-container {
+            list-style: none; /* 去掉悬停三盒子列表的默认样式 */
+            padding: 0; /* 移除内边距 */
+            display: flex; /* 使用弹性布局 */
+            justify-content: center; /* 使悬停三盒子的内容居中 */
+            gap: 20px; /* 设置悬停三盒子之间的间距为20px */
+            margin-top: 20px; /* 设置悬停三盒子的上外边距为20px */
+        }
+
+        .hover-box-container li {
+            background-color: rgba(255, 255, 255, 0.8); /* 设置悬停三盒子的背景颜色为半透明白色 */
+            padding: 15px 30px; /* 设置悬停三盒子的内边距为上下15px，左右30px */
+            border-radius: 10px; /* 设置悬停三盒子的边框为圆角 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加悬停时的过渡效果 */
+        }
+
+        .hover-box-container li:hover {
+            transform: scale(1.1); /* 悬停在悬停三盒子上时，放大1.1倍 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 设置悬停三盒子的阴影效果 */
+        }
+
+        .hover-box-container li a {
+            color: #333; /* 设置悬停三盒子中的超链接文字颜色为深灰色 */
+            text-decoration: none; /* 去掉悬停三盒子中的超链接下划线 */
+            font-weight: bold; /* 加粗悬停三盒子中的超链接文字 */
+        }
+
+        .hover-box-container li a:hover {
+            color: #ff6347; /* 悬停在悬停三盒子中的超链接上时，改变文字颜色为番茄红 */
+        }
+
+        .image-container {
+            text-align: center; /* 使图片水平居中 */
+            margin-top: 200px; /* 设置图片容器的上部间距为200px */
+            margin-bottom: 200px; /* 设置图片容器的底部间距为200px */
+        }
+
+        .image-container img {
+            display: inline-block; /* 确保图片能够应用水平居中的效果 */
+            max-width: 100%; /* 设置图片的最大宽度为100% */
+            height: auto; /* 设置图片的高度为自动 */
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            nav ul li {
+                margin: 0 0.5rem; /* 缩小导航项左右外边距为0.5rem */
+            }
+
+            .hover-box-container {
+                flex-direction: column; /* 将悬停三盒子的内容垂直排列 */
+                align-items: center; /* 设置悬停三盒子的内容水平居中 */
+            }
+
+            .hover-box-container li {
+                margin-bottom: 10px; /* 添加悬停三盒子底部的间距为10px */
+            }
+
+            .image-container {
+                margin-top: 200px; /* 设置图片容器的上部间距为200px */
+                margin-bottom: 200px; /* 设置图片容器的底部间距为200px */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 自定义鼠标 -->
+    <div class="custom-cursor"></div> <!-- 创建一个用于自定义鼠标的div元素 -->
+
+    <!-- 背景视频 -->
+    <video autoplay muted loop class="background-video"> <!-- 创建一个自动播放、静音、循环的背景视频 -->
+        <source src="images/www.mp4" type="video/mp4"> <!-- 设置背景视频的源文件和类型 -->
+        您的浏览器不支持视频标签。 <!-- 提供不支持视频标签的浏览器的替代文本 -->
+    </video>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                    <li><a href="a.html">关于我</a></li>
+                    <li><a href="f.html">服务</a></li>
+                    <li><a href="b.html">博客</a></li>
+                    <li><a href="x.html">相册</a></li>
+                    <li><a href="zuoye.html">课本衔接</a></li>
+                    <li><a href="contact.html">联系我</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>“典”亮新时代</h1> <!-- 设置网页的主要标题 -->
+    <ul class="hover-box-container">
+        <li><a href="#">“典”亮新时代 |草木植成，国之富也 </a></li> <!-- 悬停三盒子中的链接1 -->
+        <li><a href="#">“典”亮新时代 |生态文明建设篇 </a></li> <!-- 悬停三盒子中的链接2 -->
+        <li><a href="#">“典”亮新时代 |苟日新，日日新，又日新 </a></li> <!-- 悬停三盒子中的链接3 -->
+    </ul>
+    <div class="image-container">
+        <a href="https://www.baidu.com"><img src="images/image评语近人.png" alt="image评语近人" height="400px" width="600px"></a>
+        <a href="https://www.baidu.com"><img src="images/image.png" alt="image评语近人2" height="400px" width="600px"></a>
+    </div>
+    
+
+    <footer>
+        <p>&copy; 2024 山东外事职业大学 大数据工程技术 李保媛 12422706026.</p> <!-- 设置页脚的版权信息 -->
+    </footer>
+
+    <script>
+        // 隐藏式鼠标
+        const cursor = document.querySelector('.custom-cursor'); // 获取自定义鼠标元素
+
+        document.addEventListener('mousemove', function(e) { // 监听鼠标移动事件
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`; // 更新自定义鼠标的定位，使其跟随鼠标移动
+        });
+
+        document.addEventListener('click', function() { // 监听点击事件
+            cursor.classList.add('click'); // 添加点击样式
+            setTimeout(() => {
+                cursor.classList.remove('click'); // 点击后200毫秒恢复原样式
+            }, 200);
+        });
+    </script>
+</body>
+</html>
